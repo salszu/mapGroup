@@ -1,0 +1,32 @@
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+
+      .col-lg-5 {
+        border-right: 1px solid #c8c8c8;
+        height: 100%;
+      }
+
+      .links {
+        padding-top: 10px;
+      }
+
+      .table {
+        width: 100%;
+      }
+
+
+.footer{
+  background-color: ;
+  position: relative;
+
+  color: #536879;
+  font-size: 11px;
+  padding-top:0px;
+
+}
