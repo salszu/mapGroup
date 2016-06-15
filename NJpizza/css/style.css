@@ -1,0 +1,225 @@
+body {
+	width: 100%;
+	margin: auto;
+	background-color: #F5F0E7;
+	font-family: 'Arapey', serif;
+}
+
+input {
+	-webkit-transition: transition 0.3s;
+  transition: 0.3s;
+  border: 1px solid black;
+/*  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+*/	padding: 3px;
+}
+
+.li-img {
+	width: 150px;
+	max-width: 95%;
+	height: 150px;
+	display: block;
+	margin: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.header-text {
+	margin: 2px;
+	-webkit-transition: transition: 0.4s;
+	transition: 0.4s;
+	line-height: 55px;
+	vertical-align: middle;
+	-webkit-transition: transition: 0.3s;
+	transition: 0.34s;
+	margin: 0px;
+}
+
+#place-filter {
+	width: 95%;
+}
+
+
+
+#form {
+	display: block;
+	margin: auto;
+}
+
+ .srh-txt {
+	padding-top: 15px;
+	margin: 0px;
+ }
+
+.place-list {
+	margin-top: 0px;
+	margin-bottom: 5px;
+    padding: 5px;
+    height: 65vh;
+    width: 95%;
+    display: block;
+    margin: auto;
+    overflow-y: scroll;
+    border: none;
+}
+
+#refresh {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	-webkit-transition: transition 0.3s;
+	transition: 0.3s;
+	bottom: 40px;
+	left: 15px;
+	background-color: #a22414;
+	opacity: 0.7;
+	z-index: 1000;
+}
+
+
+
+.fq-items, .food-items {
+	background-color: #916012;
+   margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+    color: #F5F0E7;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px;
+    text-align: center;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.fq-items:hover, .food-items:hover {
+	background-color: #815510;
+	color:#92a214;
+	transition: 0.3s;
+}
+
+.footer{
+  background-color: ;
+  position: relative;
+  color: black;
+  font-size: 11px;
+  padding-top:0px;
+}
+
+
+#map-div {
+	width: 100%;
+	height: 600px;
+	border: none;
+	/*filter: hue-rotate(340deg);*/
+
+}
+#mapdiv {
+	position: relative;
+	height: 100%;
+
+}
+
+.fa-thumbs-up {
+	color: #92a214
+}
+
+.fa {
+	
+	
+}
+
+.fa-thumbs-down {
+	color: #a22414;
+}
+
+#search-div {
+	padding-bottom: 10px;
+}
+
+
+
+.text-shadow {
+	text-shadow: 2px 2px 5px gray;
+}
+
+.top-icon {
+	display: none;
+	height: 55px;
+	width: 55px;
+	position: absolute;
+	-webkit-transition: transition 0.3s;
+	transition: 0.3s;
+}
+.top-icon:hover, #refresh:hover {
+	background-color: grey;
+	transition: 0.3s;
+}
+
+#menu-icon {
+	border-left: 1px solid black;
+	top: 0px;
+	right: 0px;
+	padding: 4px;
+}
+
+#search-icon {
+	border-right: 1px solid black;
+	top: 0px;
+	left: 0px;
+	padding: 2px;
+}
+
+#dropdown-icon {
+	width: 45px;
+	height: 45px;
+	display: block;
+	margin: auto;
+	display: none;
+	border-radius: 30px;
+}
+#dropdown-icon:hover {
+	background-color: grey;
+}
+.rotate {
+	-webkit-transform: rotate(180deg);     /* Chrome and other webkit browsers */
+	-moz-transform: rotate(180deg);        /* FF */
+	-o-transform: rotate(180deg);          /* Opera */
+	-ms-transform: rotate(180deg);         /* IE9 */
+	transform: rotate(180deg);
+}
+
+@media (max-width: 500px) {
+
+	#query, #query-city {
+		display: block;
+		margin: auto;
+		margin-bottom: 5px;
+	}
+
+	input {
+		margin-bottom: 5px;
+	}
+
+}
+
+@media (max-width: 992px) {
+
+	.top-icon {
+		display: block;
+		z-index: 1000;
+	}
+
+	#mapdiv {
+		/*display: none;*/
+	}
+
+}
+
+
+
+
+.gmData {
+	color:#a26b14;
+}
