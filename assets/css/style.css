@@ -67,3 +67,20 @@ tbody {
 tr {
 	width: 100%;
 }
+
+h1 {
+  border: solid;
+  background: #92a214;
+}
+
+.logo {
+font-family: Indie Flower;
+line-height: 1em;
+color: undefined;
+font-size: 50px;
+text-shadow:0px 0px 0 rgb(231,231,231),1px 1px 0 rgb(216,216,216),2px 2px 0 rgb(202,202,202),3px 3px 0 rgb(187,187,187),4px 4px 0 rgb(173,173,173),5px 5px 0 rgb(158,158,158), 6px 6px 0 rgb(144,144,144),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+
+}  
+
+
+
