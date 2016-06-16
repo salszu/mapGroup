@@ -1,3 +1,5 @@
+// this is a test for branches
+
 var map;
 
 function initMap() {
