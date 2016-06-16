@@ -3,12 +3,49 @@ var map;
 function initMap() {
   // Create a map object and specify the DOM element for display.
   map = new google.maps.Map(document.getElementById('map-div'), {
-	center: {lat: 39.173303, lng: -77.177274},
+	center: {lat: 40.277187, lng: -75.914540},
 	scrollwheel: true,
-	zoom: 5
+	zoom: 8
   });
 
   var infowindow = new google.maps.InfoWindow();
+
+
+
+function fqAnswer() {
+	$('#fq-text').text('search a city, filter the resutlts, upvote or downvote your favorites');
+	setTimeout(function(){
+		$('#fq-text').text('');
+	}, 5000);
+}
+
+
+
+var styles = [
+  {
+    stylers: [
+      { hue: "" }
+      // { saturation: -20 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      // { visibility: "off" }
+    ]
+  }
+];
+
+map.setOptions({styles: styles});
+
+
 
 }
 
@@ -22,7 +59,6 @@ $(document).ready(function(){
 	var mapDiv = $('#mapdiv');
 	var searchDiv = $('#search-div');
 	var inputDiv = $('#fq-search');
-	var dropIcon = $('#dropdown-icon');
 
 
 	var wHidden = true;
@@ -106,10 +142,7 @@ App.controller('masterCtrl', function($scope) {
 		var City = $('#query-city').val();
 
 		//Checking Inputs
-		if(query == '') {
-			alert('Query field is/was blank. Please input a search query.');
-			return;
-		};
+
 		if(City == '') {
 			alert('City field is/was left blank. Please input a valid location.');
 			return;
@@ -119,7 +152,7 @@ App.controller('masterCtrl', function($scope) {
     $scope.q2 = City;
 
 		
-		var apiURL = 'https://api.foursquare.com/v2/venues/search?client_id=N1IAMKZUIK1AUHKRFGFBKPQ2YKDSBAKS4NTER5SYZN5CROR1&client_secret=4MKLXVLU2FGZQVRMAEDC15P0TFJGSCY3ZUYUZ0KHQQQLQ5R3&v=20130815%20&limit=50&near=' + City + '&query=' + query + '';
+		var apiURL = 'https://api.foursquare.com/v2/venues/search?client_id=N1IAMKZUIK1AUHKRFGFBKPQ2YKDSBAKS4NTER5SYZN5CROR1&client_secret=4MKLXVLU2FGZQVRMAEDC15P0TFJGSCY3ZUYUZ0KHQQQLQ5R3&v=20130815%20&limit=1000&near=' + City + '&query=' + query + '';
 		console.log(apiURL);
 
 		$scope.places = [];
@@ -133,8 +166,16 @@ App.controller('masterCtrl', function($scope) {
 			map = new google.maps.Map(document.getElementById('map-div'), {
 				center: {lat: data.response.venues[1].location.lat, lng: data.response.venues[1].location.lng},
 				scrollwheel: true,
+				stylers: [ { "visibility": "simplified" } ],
 				zoom: 9
 			});
+
+
+
+
+
+
+
 
 		  // Loops through JSON and saves data
 			for ( var i = 0; i < venues; i++ ) {
@@ -223,6 +264,8 @@ App.controller('masterCtrl', function($scope) {
 		});
 	}
 
+
+
 	$scope.showMarker = function(string) {
 
 		console.log(string);
@@ -239,6 +282,8 @@ App.controller('masterCtrl', function($scope) {
 			}
 		}
 	}
+
+
 
 	$scope.filterResults = function() {
 
@@ -281,5 +326,7 @@ function fqAnswer() {
 		$('#fq-text').text('');
 	}, 5000);
 }
+
+
 
 
