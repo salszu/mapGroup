@@ -1,203 +1,113 @@
 <!DOCTYPE html>
+
 <html>
+	<head>
+		<title>Pizza</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/sandstone/bootstrap.min.css">
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
-<link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
-    <title>Pizza Time</title>
+		<link rel="icon" type="image/png" href="images/pizzaMarker.png" size="20x20"/>
+
+		<script src="assets/js/jQuery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSHPWjouiZzdAI_EhWkuuLsFMEGTgyYWE&callback=initMap"async defer></script>
+		    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
+	</head>
+
+	<body ng-app="myApp" ng-controller="masterCtrl">
+
+		<!--   -->
+		<div class="container-fluid">
 
 
+ 
 
-</head>
-<body>
 
-        <div class="col-lg-4 content">
+ <!-- <div class="row"> -->
+<!-- <div class="col-lg-4 content"> -->
+<div class="content img-rounded">
         <div class="links">
             <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a> |
             <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i></a>
             // LINKS
+
+
+
+          <div class="help-tip">
+							<p>put words here. help the people!</p>
+					</div>
         </div>
-            <hr>
+        
+        <div class="logo">
+            <img src="images/pizzaLogo.png" class="text-center">
+        </div>
+
+								<form id="form" class="">
+								<br>
+									
+									<input type="text" id="query-city" placeholder="search city" class="">
+
+									<input id="submit-btn" type="button" onclick="" value="submit" ng-click="loadPlaces()" class="btn btn-danger btn-sm">
+									
+
+									<span style="padding: 15px;" id="fq-text"></span>
+								</form>
 
 
 
-            <h1 class=" logo text-center">Pizza Planet</h1>
+					
+<br>
+				<div id="search-div" class="" style="">
+				<h4>search results</h4>
+						
+						<input title="" id="place-filter" ng-keyup="filterResults()" ng-model="filter" placeholder="filter specific place"/>
+						
+						<ul class="place-list">
 
-<span style="height:100px; width:100px; background-color:#F5F0E7">#F5F0E7</span>
+							<li title="Click Any List Item To Show Its Marker On the Map" class="fq-items" ng-repeat="place in places | filter: {placeName:filter} | orderBy: 'placeName'" ng-click="showMarker(this)">
+								<div class="">
+									<b><h3>{{place.placeName}}</h3></b>
+
+										<span>{{place.placeCity}}</span>, 
+										<span>{{place.placeState}}</span> 
+										<span>{{place.placeZip}}</span>
+										<p class="text-right votes"><strong><i class="fa fa-thumbs-up" aria-hidden="true"></i> <i class="fa fa-thumbs-down" aria-hidden="true"></i></strong></p>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<br>
+
+
+				</div>
+
+
+</div>
+
+				
+						<div id="map-div" class="map-div mapdiv" style="height:98%">
+						</div>
+<!--     <span style="height:100px; width:100px; background-color:#F5F0E7">#F5F0E7</span>
 <span style="height:100px; width:100px; background-color:#a26b14">#a26b14</span>
 <span style="height:100px; width:100px; background-color:#a22414">#a22414</span>
-<span style="height:100px; width:100px; background-color:#92a214">#92a214</span>
-            
-            <p><a class="btn btn-primary" href="#" role="button">mmm pizza</a></p>
+<span style="height:100px; width:100px; background-color:#92a214">#92a214</span> -->
 
-            <table class="table table-striped">
-                <thead>
-                <td>
-                    <strong class="text-center">search results</strong>
-                </td>
-                </thead>
-                <tbody> 
-
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>result result result 
-                            <i class="fa fa-thumbs-up" aria-hidden="true"> </i>
-                            <i class="fa fa-thumbs-down" aria-hidden="true"> </i>
-                        </td>
-                    </tr> 
-                     
-                </tbody>
-            </table>
-
-
-
-        </div>
-
-
-
-
-
-
-    <div id="map"></div>
-</div>
 <footer>
-    <div class="footer text-center">
-    <span class="copyright">Kristin Gumbert & Sal Szurlej & Elizaur Reyes | 2016</span>
-  </div>
+    <div class="footer text-right">
+    <span class="copyright">Kristin Gumbert, Sal Szurlej & Elizaur Reyes | 2016</span>
+
+				<br>
+			powered by:
+			<img src="images/google.png" height="15px;"> & <img src="images/foursquare.png" height="15px;">
+  	</div>
 </footer>
 
-
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.486216, lng: -74.451819},
-          zoom: 8
-        });
-      }
-    </script>
-
-
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNwkDO9OVi7Laf_vaF2p7mIVZmfd46EEk&callback=initMap"
-    async defer></script>
-
-
-
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script type="text/javascript" src="assets/javascript/map.js"></script>
+<script type="text/javascript">
+</script>
 </body>
-
-
-
-
-
 </html>
