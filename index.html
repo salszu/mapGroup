@@ -10,10 +10,7 @@
 
 		<link rel="icon" type="image/png" href="images/njpizza.png" size=""/>
 
-		<script src="assets/js/jQuery.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-		<script src="assets/js/script.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSHPWjouiZzdAI_EhWkuuLsFMEGTgyYWE&callback=initMap"async defer></script>
+
 		    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 		    <link href='https://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
 	</head>
@@ -26,34 +23,48 @@
 
  
 
-
- <!-- <div class="row"> -->
-<!-- <div class="col-lg-4 content"> -->
 <div class="content img-rounded">
         <div class="links">
-            <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a> |
-            <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i></a>
-            // LINKS
+        <!-- tab links -->
+        	  <ul class="nav nav-tabs">
+    					<li>
+    						<a data-toggle="tab" href="#search">
+    						<i class="fa fa-search" aria-hidden="true"></i>
+    						</a>
+    					</li>
+    					<li>
+    						<a data-toggle="tab" href="#piechart">
+  							<i class="fa fa-pie-chart" aria-hidden="true"></i>
+  							</a>
+							</li>
+  					</ul>
 
-
-
+				<!-- help modal -->
           <div class="help-tip">
 							<p>put words here. help the people!</p>
 					</div>
-        </div>
+				</div> <!-- .links -->
         
+
+<!-- LOGO -->
         <div class="logo">
             <img src="images/pizzaLogo.png" class="text-center">
         </div>
 
+<br>
+
+
+<!-- begin tab content -->
+  <!-- <div class="tab-content"> -->
+
+  <!-- search tab -->
+    <!-- <div id="search" class="tab-pane fade"> -->
+
+
+					<!-- initial city search -->
 								<form id="form" class="">
-								<br>
-									
 									<input type="text" id="query-city" placeholder="search city" class="">
-
 									<input id="submit-btn" type="button" onclick="" value="submit" ng-click="loadPlaces()" class="btn btn-danger btn-sm">
-									
-
 									<span style="padding: 15px;" id="fq-text"></span>
 								</form>
 
@@ -61,35 +72,45 @@
 
 					
 <br>
+	<!-- display search results -->
 				<div id="search-div" class="" style="">
 				<h4>search results</h4>
 						
+						<!-- filter search results -->
 						<input title="" id="place-filter" ng-keyup="filterResults()" ng-model="filter" placeholder="filter specific place"/>
 						
 						<ul class="place-list">
-
-							<li title="Click Any List Item To Show Its Marker On the Map" class="fq-items" ng-repeat="place in places | filter: {placeName:filter} | orderBy: 'placeName'" ng-click="showMarker(this)">
+						<!-- hover element -->
+								<li title="Click Any List Item To Show Its Marker On the Map" class="fq-items" ng-repeat="place in places | filter: {placeName:filter} | orderBy: 'placeName'" ng-click="showMarker(this)">
 								<div class="">
-									<b><h3>{{place.placeName}}</h3></b>
 
+								<!-- display results, NAME, CITY, STATE -->
+									<b><h3>{{place.placeName}}</h3></b>
 										<span>{{place.placeCity}}</span>, 
 										<span>{{place.placeState}}</span> 
-										<span>{{place.placeZip}}</span>
-										<p class="text-right votes"><strong><i class="fa fa-thumbs-up" aria-hidden="true"></i> <i class="fa fa-thumbs-down" aria-hidden="true"></i></strong></p>
-									</p>
+										<p class="text-right votes">
+										<strong>
+											<i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+											<i class="fa fa-thumbs-down" aria-hidden="true"></i>
+										</strong>
+										</p>
+									
 								</div>
 							</li>
 						</ul>
 					</div>
-					<br>
+					
+				</div><!--	/search-div  -->
 
-<!-- this is a test to push to kristin branch -->
-
-				</div>
+<!-- </div>#search tab -->
 
 
-</div>
+<!--     <div id="piechart" class="tab-pane fade">
+       piechart
+    </div> -->
 
+  <!-- </div>tab-content -->
+</div> <!-- content div -->
 				
 						<div id="map-div" class="map-div mapdiv" style="height:98%">
 						</div>
@@ -107,7 +128,11 @@
 			<img src="images/google.png" height="15px;"> & <img src="images/foursquare.png" height="15px;">
   	</div>
 </footer>
-
+		<script src="assets/js/jQuery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSHPWjouiZzdAI_EhWkuuLsFMEGTgyYWE&callback=initMap"async defer></script>
+		
 <script type="text/javascript">
 </script>
 </body>
