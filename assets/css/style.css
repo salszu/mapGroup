@@ -30,7 +30,7 @@ input {
 }
 
 .links {
-	border-bottom: 1px solid #d29929;
+
 	padding-bottom:5px;
 	width: 100%;
 	color: #d29929;
@@ -39,6 +39,14 @@ input {
 .links a {
 	color: #B9642B;
 }
+
+
+.nav {
+		border-bottom: 1px solid #d29929;
+}
+
+
+
 
 .li-img {
 	width: 150px;
@@ -358,7 +366,7 @@ input {
 @keyframes fadeIn {
 	0% { opacity:0; }
 	100% { opacity:100%; }
-=======
+
 tr {
 	width: 100%;
 }
@@ -390,18 +398,6 @@ tr {
   font-family: Lobster;
   font-weight: bold;
 
->>>>>>> b2de9493cde7994c997a463a68fa09486f8e5bad
-}
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
 
 
 
@@ -417,9 +413,4 @@ tr {
     	float: bottom;
     }
 }
-=======
- 
 
-
-
->>>>>>> b2de9493cde7994c997a463a68fa09486f8e5bad
